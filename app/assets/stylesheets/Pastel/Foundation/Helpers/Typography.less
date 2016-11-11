@@ -1,0 +1,112 @@
+// Pastel/Foundation/Helpers/Typography
+
+//	@helper font-size
+.font-size(@value) {
+	.decimal-unit(font-size, @value);
+}
+
+//	@helper line-height
+.line-height(@value) {
+	.decimal-unit(line-height, @value);
+}
+
+//	@helper typography
+.typography(@font-size, @line-height-multiplier: 1.5) {
+	@line-height: (@font-size * @line-height-multiplier);
+	.font-size(@font-size);
+	.line-height(@line-height);
+}
+
+.typography(@font-size, @line-height-multiplier: 1.5) when (@line-height-multiplier = 0) {
+	.font-size(@font-size);
+}
+
+// @helper truncate-text
+.truncate-text() {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// @helper hyphenated-breaks
+.hyphenated-breaks() {
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+
+// @helper font-face
+.font-face(@family, @file, @weight: normal, @style: normal) {
+	font-family: "@{family}";
+	src: url("@{file}.eot");
+	src: url("@{file}.eot?#iefix") format("embedded-opentype"),
+		url("@{file}.woff") format("woff"),
+		url("@{file}.ttf") format("truetype"),
+		url("@{file}.svg#@{family}") format("svg");
+	font-weight: @weight;
+	font-style: @style;
+}
+
+// @class-helper .align--
+.align {
+	&--left {
+		text-align: left;
+	}
+	&--center {
+		text-align: center;
+	}
+	&--right {
+		text-align: right;
+	}
+	&--justify {
+		text-align: justify;
+	}
+}
+
+// @class-helper .text-size
+.text-size {
+	&--tiny {
+		.font-size-tiny;
+	}
+	&--small {
+		.font-size-small;
+	}
+	&--base {
+		.font-size-base;
+	}
+	&--medium {
+		.font-size-medium;
+	}
+	&--large {
+		.font-size-large;
+	}
+	&--x-large {
+		.font-size-x-large;
+	}
+	&--2x-large {
+		.font-size-2x-large;
+	}
+	&--3x-large {
+		.font-size-3x-large;
+	}
+	&--4x-large {
+		.font-size-4x-large;
+	}
+	&--5x-large {
+		.font-size-5x-large;
+	}
+}
+
+// @helper text-indent
+.text-indent(@indent) {
+	.decimal-unit(text-indent, @indent);
+}
+
+// @helper text-shadow
+.text-shadow(@shadow-options) {
+	.decimal-unit(text-shadow, @shadow-options);
+}

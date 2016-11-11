@@ -1,0 +1,11 @@
+// Pastel/Foundation/Helpers/Animation
+
+// @helper animate
+.animate(@animation-name, @animation-duration: @animation-timing-natural, @animation-easing: @animation-easing-natural) {
+	.animation(@arguments);
+}
+
+// @helper tween
+.tween(@property-name, @transition-duration: @animation-timing-natural, @transition-easing: @animation-easing-natural) {
+	.transition(@property-name @transition-duration @transition-easing);
+}

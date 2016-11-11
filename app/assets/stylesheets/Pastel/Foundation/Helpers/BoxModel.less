@@ -1,0 +1,35 @@
+// Pastel/Foundation/Helpers/BoxModel
+
+// @helper margin
+.margin(...) { .decimal-unit(margin, @arguments); }
+.margin-top(@value) { .decimal-unit(margin-top, @arguments); }
+.margin-right(@value) { .decimal-unit(margin-right, @arguments); }
+.margin-bottom(@value) { .decimal-unit(margin-bottom, @arguments); }
+.margin-left(@value) { .decimal-unit(margin-left, @arguments); }
+
+.margin-horizontal(@value) {
+	.margin-left(@value);
+	.margin-right(@value);
+}
+
+.margin-vertical(@value) {
+	.margin-top(@value);
+	.margin-bottom(@value);
+}
+
+//	@helper padding
+.padding(...) { .decimal-unit(padding, @arguments); }
+.padding-top(@value) { .decimal-unit(padding-top, @arguments); }
+.padding-right(@value) { .decimal-unit(padding-right, @arguments); }
+.padding-bottom(@value) { .decimal-unit(padding-bottom, @arguments); }
+.padding-left(@value) { .decimal-unit(padding-left, @arguments); }
+
+.padding-horizontal(@value) {
+	.padding-left(@value);
+	.padding-right(@value);
+}
+
+.padding-vertical(@value) {
+	.padding-top(@value);
+	.padding-bottom(@value);
+}

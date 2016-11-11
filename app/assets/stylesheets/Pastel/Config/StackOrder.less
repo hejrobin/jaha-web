@@ -1,0 +1,28 @@
+// Pastel/Config/StackOrder
+
+@stack-order-50: 500;
+@stack-order-100: 1000;
+@stack-order-200: 2000;
+@stack-order-300: 3000;
+@stack-order-400: 4000;
+@stack-order-500: 5000;
+@stack-order-600: 6000;
+@stack-order-700: 7000;
+@stack-order-800: 8000;
+@stack-order-900: 9000;
+@stack-order-1k: 9999;
+
+
+// @helper Stack Mixin
+
+.stack(50, @offset: 0) { z-index: @stack-order-50 + @offset; }
+.stack(100, @offset: 0) { z-index: @stack-order-100 + @offset; }
+.stack(200, @offset: 0) { z-index: @stack-order-200 + @offset; }
+.stack(300, @offset: 0) { z-index: @stack-order-300 + @offset; }
+.stack(400, @offset: 0) { z-index: @stack-order-400 + @offset; }
+.stack(500, @offset: 0) { z-index: @stack-order-500 + @offset; }
+.stack(600, @offset: 0) { z-index: @stack-order-600 + @offset; }
+.stack(700, @offset: 0) { z-index: @stack-order-700 + @offset; }
+.stack(800, @offset: 0) { z-index: @stack-order-800 + @offset; }
+.stack(900, @offset: 0) { z-index: @stack-order-900 + @offset; }
+.stack(1k, @offset: 0) { z-index: @stack-order-1k + @offset; }

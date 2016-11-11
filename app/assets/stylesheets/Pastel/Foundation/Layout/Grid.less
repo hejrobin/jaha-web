@@ -1,0 +1,85 @@
+// Pastel/Foundation/Layout/Grid
+
+.grid {
+	width: 100%;
+	.clearfix;
+}
+
+.any-screen() {
+	.column {
+		float: left;
+		&&--one-half {
+			width: 50%;
+		}
+		&&--one-third {
+			width: 33.3%;
+		}
+		&&--alpha&--one-third {
+			width: 33.4%;
+		}
+		&&--two-thirds {
+			width: 66.7%;
+		}
+		&&--one-quarter {
+			width: 25%;
+		}
+		&&--three-quarters {
+			width: 75%;
+		}
+		&&--one-fifth {
+			width: 20%;
+		}
+		&&--two-fifths {
+			width: 40%;
+		}
+		&&--three-fifths {
+			width: 60%;
+		}
+		&&--four-fifths {
+			width: 80%;
+		}
+	}
+}
+
+.small-and-tiny-screen-layout() {
+	.grid {
+		&--traverse {
+			& > .column {
+				&--one-third,
+				&--one-quarter,
+				&--one-fifth {
+					width: 50%;
+				}
+			}
+		}
+		&--cascade {
+			& > .column {
+				&--alpha,
+				&--one-half,
+				&--one-third,
+				&--one-third,
+				&--two-thirds,
+				&--one-quarter,
+				&--three-quarters,
+				&--one-fifth,
+				&--two-fifths,
+				&--three-fifths,
+				&--four-fifths {
+					width: 100%;
+					clear: both;
+				}
+				&--alpha {
+					width: 100% !important;
+				}
+			}
+		}
+	}
+}
+
+.small-screen() {
+	.small-and-tiny-screen-layout;
+}
+
+.tiny-screen() {
+	.small-and-tiny-screen-layout;
+}

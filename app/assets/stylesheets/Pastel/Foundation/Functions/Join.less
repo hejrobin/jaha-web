@@ -1,0 +1,27 @@
+// Pastel/Foundation/Functions/Join
+
+//
+//	join
+//
+//	@list: banana, apple, pear, potato, carrot, peach;
+//
+//	.join(@list, ', ');
+//
+//	.edibles {
+//		content: @{string}
+//	}
+//
+.join(...) {}
+.join(@arr) { .join(@word, ''); }
+.join(@arr, @glue, @prefix: "", @suffix: "") {
+	.join(@word, @arr, @glue, @n) when (@n >= 0) {
+		.-return(@wordResult, @n2) when (@n2 = 0) {
+			@string: ~'@{prefix}@{wordResult}@{suffix}';
+		}
+		.-return(@word, @n);
+		@add: extract(@arr, @n);
+		.join('@{add}@{glue}@{prefix}@{word}@{suffix}', @arr, @glue, (@n - 1));
+	}
+	@last: extract(@arr, length(@arr));
+	.join(@last, @arr, @glue, (length(@arr) - 1));
+}

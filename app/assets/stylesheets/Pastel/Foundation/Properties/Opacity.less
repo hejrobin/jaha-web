@@ -1,0 +1,9 @@
+// Pastel/Foundation/Properties/Opacity
+
+.opacity(@value) {
+	@ie_opacity: ceil(@value * 100);
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ie_opacity})";
+	filter: ~"alpha(opacity=@{ie_opacity})";
+	-moz-opacity: @value;
+	opacity: @value;
+}

@@ -1,0 +1,20 @@
+// Pastel/Foundation/Helpers/Color
+
+// @anonymous define-swatch
+.define-swatch(@name) { @swatch: "swatch-@{name}"; }
+
+// @helper color-rgb
+.color-rgb(@color) { @rgb: rgb(red(@color), green(@color), blue(@color)); }
+
+// @helper	color-rgba
+.color-rgba(@color, @alpha: 1) { @rgba: rgba(red(@color),green(@color), blue(@color), @alpha); }
+
+// @helper foreground-color
+.foreground-color(@swatch-name) { .define-swatch(@swatch-name); color: @@swatch; }
+.foreground-color-rgb(@swatch-name) { .define-swatch(@swatch-name); color: @rgb; .color-rgb(@@swatch); }
+.foreground-color-rgba(@swatch-name, @alpha: 1) { .define-swatch(@swatch-name); color: @rgba; .color-rgba(@@swatch, @alpha); }
+
+// @helper background-color
+.background-color(@swatch-name) { .define-swatch(@swatch-name); background-color: @@swatch; }
+.background-color-rgb(@swatch-name) { .define-swatch(@swatch-name); background-color: @rgb; .color-rgb(@@swatch); }
+.background-color-rgba(@swatch-name, @alpha: 1) { .define-swatch(@swatch-name); background-color: @rgba; .color-rgba(@@swatch, @alpha); }

@@ -1,0 +1,182 @@
+// Pastel/Components/Button
+
+@import "Button/Busy";
+@import "Button/Ripple";
+
+.button-state(@foreground-color, @background-color-start: 0, @background-color-stop: 0) when not (@background-color-stop = 0) {
+	.background-image(linear-gradient(to bottom, @background-color-start, @background-color-stop));
+	color: @foreground-color !important;
+}
+
+.button-state(@foreground-color, @background-color-start: 0, @background-color-stop: 0) when (@background-color-stop = 0) {
+	background: @background-color-start;
+	color: @foreground-color !important;
+}
+
+.button-state(@foreground-color, @background-color-start: 0, @background-color-stop: 0) when (@background-color-stop = 1) {
+	background: @background-color-start;
+	color: @foreground-color !important;
+}
+
+.button-state(@foreground-color, @background-color-start: 0, @background-color-stop: 0) when (default()) {
+	background: none;
+	color: @foreground-color !important;
+}
+
+.button {
+	.padding(1 2);
+	font-weight: 500;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-align: center;
+	.decimal-unit(text-shadow, rgba(0, 0, 0, 10%) 0 0 .3);
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	.border-radius(.3);
+	.elevation(1);
+	.tween(all);
+
+	&__group {
+		.margin-top(1);
+
+		&&--left {
+			text-align: left;
+		}
+
+		&&--center {
+			text-align: center;
+		}
+
+		&&--right {
+			text-align: right;
+		}
+	}
+
+	span {
+		.stack(200);
+	}
+
+	&__ink {
+		.size(1);
+		.background-color-rgba(slate-500, .3);
+		position: absolute;
+		.adjust(0, 0);
+		display: block;
+		.border-radius(100%);
+		.scale(0);
+	}
+
+	&--ripple {
+		.animate(button-ripple, @animation-timing-natural, linear);
+	}
+
+	// Sizes
+
+	&--fluid {
+		margin: 0 !important;
+		.width(100%);
+	}
+
+	&--tiny {
+		.padding(.3 .8);
+		.font-size-tiny;
+	}
+
+	&--small {
+		.padding(.5 1.2);
+		.font-size-small;
+	}
+
+	&--medium {
+		.font-size-medium;
+	}
+
+	&--large {
+		.padding(1.5 3);
+		.font-size-large;
+	}
+
+	&--x-large {
+		.padding(1.5 3);
+		.font-size-x-large;
+	}
+
+	&--2x-large {
+		.padding(1.5 3);
+		.font-size-2x-large;
+	}
+
+	&--3x-large {
+		.padding(1.5 3);
+		.font-size-3x-large;
+	}
+
+	// Style: Default
+	.button-state(@swatch-slate-700, @swatch-base-white, @swatch-slate-50);
+
+	&:hover {
+		.button-state(@swatch-slate-900, @swatch-base-white, @swatch-slate-50);
+		.elevation(3);
+	}
+
+	&--flat {
+		.button-state(@swatch-slate-700, @swatch-slate-50);
+	}
+
+	&--ghost {
+		.button-state(@swatch-slate-700, fade(@swatch-slate-500, 10%));
+		&:hover {
+			.button-state(@swatch-slate-900, fade(@swatch-slate-500, 14%));
+		}
+	}
+
+	&--translucent {
+		.button-state(@swatch-slate-700);
+		&:hover {
+			.button-state(@swatch-slate-900, fade(@swatch-slate-500, 7%));
+		}
+	}
+
+	&--ghost,
+	&--translucent {
+		.box-shadow(none);
+		&:hover {
+			.box-shadow(none);
+		}
+	}
+
+	&--busy {
+		cursor: wait;
+		text-shadow: none !important;
+
+		&, &:hover {
+			.button-state(transparent, fade(@swatch-slate-500, 7%)) !important;
+			.box-shadow(none) !important;
+		}
+
+		&:after {
+			@size: 2.4;
+			@weight: .2;
+			@gutter-color: fade(@swatch-slate-500, 20%);
+			@indicator-color: @swatch-slate-500;
+			@offset: (@size + @weight) * .5;
+			.margin(-@offset 0 0 -@offset);
+			.size(@size);
+			position: absolute;
+			.adjust(50%, 50%);
+			content: '';
+			.border-radius(@size);
+			.border(@gutter-color @weight solid);
+			border-top-color: @indicator-color;
+			.animate(button-busy, @animation-timing-slow, linear);
+			.animation-iteration-count(infinite);
+		}
+	}
+
+	// Styles
+	@import "Button/Action"; // Style: Action (Blue)
+	@import "Button/Commit"; // Style: Action (Green)
+
+}

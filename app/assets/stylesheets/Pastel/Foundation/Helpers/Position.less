@@ -1,0 +1,20 @@
+// Pastel/Foundation/Helpers/Position
+
+// @helper top, right, bottom, left
+.top(@unit) { .decimal-unit(top, @unit); }
+.right(@unit) { .decimal-unit(right, @unit); }
+.bottom(@unit) { .decimal-unit(bottom, @unit); }
+.left(@unit) { .decimal-unit(left, @unit); }
+
+
+// @helper adjust
+.adjust(@x, @y, @axis: top-left) when (@axis = top-left) { .top(@y); .left(@x); right: auto; bottom: auto; }
+.adjust(@x, @y, @axis: top-left) when (@axis = top-right) { .top(@y); .right(@x); left: auto; bottom: auto; }
+.adjust(@x, @y, @axis: top-left) when (@axis = bottom-left) { .bottom(@y); .left(@x); top: auto; right: auto; }
+.adjust(@x, @y, @axis: top-left) when (@axis = bottom-right) { .bottom(@y); .right(@x); top: auto; left: auto; }
+
+// @helper fixate
+.fixate(@position, @x, @y, @axis: top-left) {
+	position: @position;
+	.adjust(@x, @y, @axis);
+}

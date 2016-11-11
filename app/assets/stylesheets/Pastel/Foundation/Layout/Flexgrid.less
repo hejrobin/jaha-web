@@ -1,0 +1,37 @@
+// Pastel/Foundation/Layout/Flexgrid
+
+.flexgrid {
+	&, & > .column {
+		.flex-layout;
+	}
+	&__column {
+		.flex-direction(column);
+		&--reversed {
+			.flex-direction(column-reverse);
+		}
+	}
+	&__row {
+		.flex-direction(row);
+		&--reversed {
+			.flex-direction(row-reverse);
+		}
+	}
+	&--fill {
+		.width(100%);
+	}
+	&--grow {
+		.height(100%);
+	}
+}
+
+.small-screen() {
+	.flexgrid {
+		display: block;
+	}
+}
+
+.tiny-screen() {
+	.flexgrid {
+		display: block;
+	}
+}

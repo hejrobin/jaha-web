@@ -1,0 +1,29 @@
+// Pastel/Foundation/Layout/Wrap
+
+@wrap-sizes: 42, 54, 72, 96, 120;
+
+#wrapper,
+.wrap {
+	margin: 0 auto;
+}
+
+html {
+	height: 100%;
+}
+
+body,
+#wrapper {
+	min-hright: 100%;
+}
+
+.for(@wrap-sizes); .-each(@wrap-size) {
+	@wrap-size-pixels: @wrap-size * 10;
+	.max-width--@{wrap-size-pixels}px,
+	body.wrap-at-@{wrap-size-pixels}px .wrap,
+	body.contain-wrap.wrap-at-@{wrap-size-pixels}px div#wrapper {
+		.max-width(@wrap-size);
+	}
+	.max-width--@{wrap-size-pixels}px {
+		margin: 0 auto;
+	}
+}

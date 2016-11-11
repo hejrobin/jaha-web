@@ -1,0 +1,61 @@
+// Pastel/Components/Button/Commit
+
+&--commit {
+	@color-text: @swatch-green-50;
+	@color-tint: @swatch-green-400;
+	@color-base: @swatch-green-500;
+	@color-ink: @swatch-green-700;
+
+	.button-state(@color-text, @color-tint, @color-base);
+
+	&:hover {
+		.button-state(@swatch-base-white, @color-tint, @color-base);
+	}
+
+	.button__ink {
+		background-color: fade(@color-ink, 60%);
+	}
+
+	&.button {
+		&--busy {
+			&, &:hover {
+				.button-state(transparent, fade(@color-base, 7%)) !important;
+			}
+
+			&:after {
+				border-color: fade(@color-base, 20%);
+				border-top-color: @color-base;
+			}
+		}
+
+		&--flat {
+			.button-state(@color-text, @color-tint);
+
+			&:hover {
+				.button-state(@swatch-base-white, @color-tint);
+			}
+		}
+
+		&--busy,
+		&--ghost,
+		&--translucent {
+			.button__ink {
+				background-color: fade(@color-base, 30%);
+			}
+		}
+
+		&--ghost {
+			.button-state(@color-base, fade(@color-base, 10%));
+			&:hover {
+				.button-state(@swatch-blue-700, fade(@color-base, 14%));
+			}
+		}
+
+		&--translucent {
+			.button-state(@color-base);
+			&:hover {
+				.button-state(@swatch-blue-700, fade(@color-base, 7%));
+			}
+		}
+	}
+}

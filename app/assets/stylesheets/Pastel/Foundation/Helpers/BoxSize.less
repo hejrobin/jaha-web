@@ -1,0 +1,35 @@
+// Pastel/Foundation/Helpers/BoxModel
+
+// @helper width
+.width(@value, @max: none) {
+	.decimal-unit(width, @value);
+}
+
+.width(@value, @max: none) when not(default()) {
+	.decimal-unit(width, @value);
+	.decimal-unit(max-width, @max);
+}
+
+.max-width(@value) {
+	.decimal-unit(max-width, @value);
+}
+
+
+// @helper height
+.height(@value, @max: none) {
+	.decimal-unit(height, @value);
+}
+
+.height(@value, @max: none) when not(default()) {
+	.decimal-unit(height, @value);
+	.decimal-unit(max-height, @max);
+}
+
+.max-height(@value) {
+	.decimal-unit(max-height, @value);
+}
+
+
+// @helper size
+.size(@value) { .width(@value); .height(@value); }
+.size(@x, @y) { .width(@x); .height(@y); }
