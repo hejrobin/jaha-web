@@ -10,8 +10,10 @@
 	<meta name="format-detection" content="telephone=no" />
 	<link href="public/assets/stylesheets/style.css" type="text/css" media="all" rel="stylesheet" />
 </head><body class="wrap-at-720px">
-	<div class="wrap">
-		<main id="app" role="application">Loading application&hellip;</main>
+	<div class="wrap app-container">
+		<main id="app" role="application">
+			<i class="loading"></i>
+		</main>
 	</div>
 	<script src="public/assets/javascripts/app.js"></script>
 </body></html>

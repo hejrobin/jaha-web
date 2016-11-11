@@ -21,3 +21,23 @@ body {
 		);
 	background-blend-mode: multiply;
 }
+
+.loading {
+	&:after {
+		@size: 10;
+		@weight: .3;
+		@gutter-color: fade(@swatch-pink-500, 20%);
+		@indicator-color: @swatch-pink-500;
+		@offset: (@size + @weight) * .5;
+		.margin(-@offset 0 0 -@offset);
+		.size(@size);
+		position: absolute;
+		.adjust(50%, 50%);
+		content: '';
+		.border-radius(@size);
+		.border(@gutter-color @weight solid);
+		border-top-color: @indicator-color;
+		.animate(button-busy, @animation-timing-slow, linear);
+		.animation-iteration-count(infinite);
+	}
+}
