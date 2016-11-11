@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "jaha-web",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "Web admin interface for JAHA-API.",
 	"main": "index.js",
 	"scripts": {
