@@ -1,44 +1,47 @@
 // Pastel/Components/TextField
 
-.textfield {
+.component() {
+	.textfield {
 
-	strong,
-	input {
-		cursor: pointer;
-	}
+		strong,
+		input {
+			cursor: pointer;
+		}
 
-	strong {
-		.font-size-tiny;
-		font-weight: 900;
-		text-transform: uppercase;
-		color: @swatch-slate-300;
-		.tween(color);
-		display: block;
-	}
-
-	&&--focused {
 		strong {
-			color: @swatch-slate-500;
+			.font-size-tiny;
+			font-weight: 900;
+			text-transform: uppercase;
+			color: @swatch-slate-300;
+			.tween(color);
+			display: block;
 		}
-	}
 
-	input {
-		.margin(.5 0 @card-content-offset 0);
-		.padding(.75 1);
-		background: fade(@swatch-slate-1k, 1%);
-		font-family: @font-family-default;
-		width: 100%;
-		.font-size-base;
-		border: none;
-		.border-radius(.2);
-		.box-shadow(inset fade(@swatch-slate-1k, 10%) 0 0 0 .1);
-		display: block;
-		.tween(box-shadow);
-
-		&:focus {
-			background: fade(@swatch-slate-1k, 5%);
-			.box-shadow(inset fade(@swatch-slate-1k, 20%) 0 0 0 .1);
+		&&--focused {
+			strong {
+				color: @swatch-slate-500;
+			}
 		}
+
+		input {
+			.margin(.5 0 @card-content-offset 0);
+			.padding(.75 1);
+			background: fade(@swatch-slate-1k, 1%);
+			font-family: @font-family-default;
+			width: 100%;
+			.font-size-base;
+			border: none;
+			.border-radius(.2);
+			.box-shadow(inset fade(@swatch-slate-1k, 10%) 0 0 0 .1);
+			display: block;
+			.tween(box-shadow);
+
+			&:focus {
+				background: fade(@swatch-slate-1k, 5%);
+				.box-shadow(inset fade(@swatch-slate-1k, 20%) 0 0 0 .1);
+			}
+		}
+
 	}
 
 }

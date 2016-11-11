@@ -69,6 +69,10 @@ export default class TextField extends Component {
 		return this.refs.textField.value;
 	}
 
+	reset() {
+		this.refs.textField.value = null;
+	}
+
 	render() {
 		return (
 			<label {...this.componentProperties()} {...this.componentClassNames()}>

@@ -8,18 +8,16 @@ import Button from '../uikit/button';
 export default class LoginForm extends Component {
 
 	static defaultProps = {
-		shouldRender: true,
 		observeChange: function() {}
 	}
 
 	static propTypes = {
-		shouldRender: PropTypes.bool,
 		api: PropTypes.object.isRequired,
 		observeAuthentication: PropTypes.func
 	}
 
 	state = {
-		hasAuthenticated: false,
+		hasAuthenticated: null,
 		isAuthenticating: false
 	}
 
@@ -36,21 +34,29 @@ export default class LoginForm extends Component {
 		})
 	}
 
-	render() {
-		if(!this.props.shouldRender) {
-			return null;
+	renderAuthenticationError() {
+		if (!this.state.isAuthenticating && this.state.hasAuthenticated === false) {
+			return (
+				<Segment classNames="error">
+					<p>Authentication failed.</p>
+				</Segment>
+			);
 		}
+		return null;
+	}
 
+	render() {
 		return (
 			<article className={"max-width--420px"}>
 				<Card isSegmented={true}>
+					{this.renderAuthenticationError()}
 					<form onSubmit={::this.handleAuthentication}>
 						<Segment>
 							<TextField ref="username" type="email" label="Username" />
 							<TextField ref="password" type="password" label="Password" />
 						</Segment>
 						<Segment isActionBar={true}>
-							<Button buttonType="submit" label="Log in" isBusy={this.state.isAuthenticating} intent="action" isFluid={true} type="ghost" size="medium" />
+							<Button buttonType="submit" label="Log in" isBusy={this.state.isAuthenticating} intent="action" isFluid={true} size="medium" />
 						</Segment>
 					</form>
 				</Card>

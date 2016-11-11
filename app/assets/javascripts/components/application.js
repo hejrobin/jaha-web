@@ -13,20 +13,32 @@ export default class Application extends Component {
 	}
 
 	observeAuthentication(hasAuthenticated) {
-		if(hasAuthenticated === true) {
+		if (hasAuthenticated === true) {
 			this.setState({ hasAuthenticated });
 		}
 	}
 
-	render() {
-		let {hasAuthenticated} = this.state;
+	renderLogin() {
+		if (!this.state.hasAuthenticated) {
+			return (<Login api={api} observeAuthentication={::this.observeAuthentication} />);
+		}
+		return null;
+	}
 
+	renderAdmin() {
+		if (this.state.hasAuthenticated) {
+			return (<Admin api={api} />);
+		}
+		return null;
+	}
+
+	render() {
 		return (
 			<article className="deck deck--no-heading">
-				<Login shouldRender={!hasAuthenticated} api={api} observeAuthentication={::this.observeAuthentication} />
-				<Admin shouldRender={hasAuthenticated} api={api} />
+				{this.renderLogin()}
+				{this.renderAdmin()}
 			</article>
-		)
+		);
 	}
 
 }

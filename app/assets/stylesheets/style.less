@@ -41,3 +41,21 @@ body {
 		.animation-iteration-count(infinite);
 	}
 }
+
+.error, .success {
+	.padding(@card-content-offset * .5) !important;
+	p {
+		.padding(@card-content-offset * .5);
+		background-color: @swatch-red-50;
+		text-align: center;
+		color: @swatch-red-600;
+		.border-radius(.2);
+	}
+}
+
+.success {
+	p {
+		background-color: @swatch-green-50;
+		color: @swatch-green-600;
+	}
+}
